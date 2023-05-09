@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="insert-into-goods" author="max">
+        <sql>INSERT INTO goods (good_id, good_name) VALUES (1, 'Хлеб'), (2, 'Молоко'), (3, 'Виноград'),
+                                      (4, 'Утюг');
+        </sql>
+    </changeSet>
+
+    <changeSet id="insert-into-shopping_lists" author="max">
+        <sql>
+            Insert into shopping_lists (list_id, date, name_of_list, amount_of_goods, shopping_mark, good_id) values (1, '4.05.2023', 'Cписок - продуктовый магазин', 1, false, 1),
+                                                                                                                     (2, '4.05.2023', 'Список - продуктовый магазин', 1, false, 2),
+                                                                                                                     (3, '4.05.2023', 'Список - продуктовый магазин', 1, false, 3),
+                                                                                                                     (4, '4.05.2023', 'Список - магазин электроники', 1, false, 4);
+        </sql>
+    </changeSet>
+    </databaseChangeLog>
