@@ -1,9 +1,10 @@
-package Controller;
+package com.example.praktikaneoflex.Controller;
 
-import Entity.GoodsEntity;
-import Service.GoodsService;
+import com.example.praktikaneoflex.Entity.GoodsEntity;
+import com.example.praktikaneoflex.Service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +18,9 @@ public class GoodsController {
     public void addGood(@RequestBody GoodsEntity goodsEntity){
         goodsService.addGood(goodsEntity);
     }
-    @RequestMapping(method = RequestMethod.DELETE, value = "/goods")
-    public void deleteGood(@RequestBody GoodsEntity goodsEntity){
-        goodsService.deleteGood(goodsEntity);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/goods/{id}")
+    public void deleteGood(@PathVariable Integer id){
+        goodsService.deleteGood(id);
     }
 
 

@@ -1,8 +1,7 @@
-package Service;
+package com.example.praktikaneoflex.Service;
 
-import Entity.GoodsEntity;
-import Entity.ShoppingListsEntity;
-import Repository.GoodsRepository;
+import com.example.praktikaneoflex.Entity.GoodsEntity;
+import com.example.praktikaneoflex.Repository.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
@@ -15,8 +14,8 @@ public class GoodsService {
         goodsRepository.save(goodsEntity);
     }
 
-    public void deleteGood(GoodsEntity goodsEntity){
-        goodsRepository.delete(goodsEntity);
+    public void deleteGood(Integer id){
+        goodsRepository.deleteById(id);
     }
 
 

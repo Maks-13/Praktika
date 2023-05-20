@@ -10,12 +10,18 @@
         </sql>
     </changeSet>
 
+    <changeSet id="insert-into-lists" author="max">
+        <sql>
+            INSERT INTO lists (list_id, name_of_list, date) VALUES (1, 'Cписок - продуктовый магазин', '4.05.2023'),
+                                                                   (2, 'Список - строительный магазин', '18.05.2023');
+        </sql>
+    </changeSet>
     <changeSet id="insert-into-shopping_lists" author="max">
         <sql>
-            Insert into shopping_lists (list_id, date, name_of_list, amount_of_goods, shopping_mark, good_id) values (1, '4.05.2023', 'Cписок - продуктовый магазин', 1, false, 1),
-                                                                                                                     (2, '4.05.2023', 'Список - продуктовый магазин', 1, false, 2),
-                                                                                                                     (3, '4.05.2023', 'Список - продуктовый магазин', 1, false, 3),
-                                                                                                                     (4, '4.05.2023', 'Список - магазин электроники', 1, false, 4);
+            Insert into shopping_lists (shopping_list_id, amount_of_goods, shopping_mark, list_id, good_id) values (1, 1, false, 1, 1),
+                                                                                                                     (2, 1, false, 1, 2),
+                                                                                                                     (3, 1, false, 1, 3),
+                                                                                                                     (4, 1, false, 2, 4);
         </sql>
     </changeSet>
     </databaseChangeLog>

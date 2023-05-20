@@ -4,12 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <include file="insert-fields.xml" relativeToChangelogFile="true"/>
-
-    <changeSet id="drop" author="max">
-        <sql>Drop table goods</sql>
-    </changeSet>
-
     <changeSet id="goods" author="max">
         <createTable tableName="goods">
             <column name="good_id" type="int" autoIncrement="true">
@@ -21,28 +15,38 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="lists" author="max">
+        <createTable tableName="lists">
+            <column name="list_id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="name_of_list" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
     <changeSet id="shopping-lists" author="max">
         <createTable tableName="shopping_lists">
-            <column name="list_id" type="int" autoIncrement="true">
+            <column name="shopping_list_id" type="int" autoIncrement="true">
 		    <constraints nullable="false" primaryKey="true" />
 		</column>
-		<column name="date" type="date">
-		   <constraints nullable="false"/>
-		</column>
-		<column name="name_of_list" type="varchar(50)">
-            <constraints nullable="false"/>
-        </column>
         <column name="amount_of_goods" type="int">
             <constraints nullable="false"/>
         </column>
         <column name="shopping_mark" type="boolean">
             <constraints nullable="false"/>
         </column>
+            <column name="list_id" type="int">
+                <constraints nullable="false" foreignKeyName="shopping_lists_list_id_lists" references="lists(list_id)"/>
+            </column>
         <column name="good_id" type="int">
             <constraints nullable="false" foreignKeyName="shopping_lists_good_id_goods" references="goods(good_id)"/>
         </column>
     </createTable>
     </changeSet>
-
 
 </databaseChangeLog>
