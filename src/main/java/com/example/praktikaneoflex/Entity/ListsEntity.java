@@ -1,19 +1,18 @@
 package com.example.praktikaneoflex.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "lists")
-public class ListsEntity {
+public class ListsEntity { //ссылка на сам лист
 
-    @Id
+    @Id //каскадноне удаление
 private Integer listId;
 
 private String nameOfList;
 
 private String date;
+
 public ListsEntity(){
 
 }

@@ -2,6 +2,8 @@ package com.example.praktikaneoflex.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "shopping_lists")
 public class ShoppingListsEntity {
@@ -13,21 +15,22 @@ public class ShoppingListsEntity {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "listId", referencedColumnName = "listId")
-    private ListsEntity listId;
+    private ListsEntity list;
     @ManyToOne
     @JoinColumn(name = "goodId", referencedColumnName = "goodId")
-    private GoodsEntity goodId;
+    private GoodsEntity good;
 
     public ShoppingListsEntity(){
 
     }
 
-    public ShoppingListsEntity(Integer shoppingListId, String amountOfGoods, Boolean shoppingMark, GoodsEntity goodId){
+    public ShoppingListsEntity(Integer shoppingListId, String amountOfGoods, Boolean shoppingMark, GoodsEntity good, ListsEntity list){
         super();
         this.shoppingListId = shoppingListId;
         this.amountOfGoods = amountOfGoods;
         this.shoppingMark = shoppingMark;
-        this.goodId = goodId;
+        this.good = good;
+        this.list = list;
     }
 
     public void setShoppingListId(Integer listId) {
@@ -53,20 +56,20 @@ public class ShoppingListsEntity {
         return shoppingMark;
     }
 
-    public void setListId(ListsEntity listId) {
-        this.listId = listId;
+    public void setListId(ListsEntity list) {
+        this.list = list;
     }
 
-    public ListsEntity getListId() {
-        return listId;
+    public ListsEntity getList() {
+        return list;
     }
 
     public void setGoodId(GoodsEntity goodId) {
-        this.goodId = goodId;
+        this.good = goodId;
     }
 
     public GoodsEntity getGoodId() {
-        return goodId;
+        return good;
     }
 
 }
